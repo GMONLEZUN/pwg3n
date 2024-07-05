@@ -77,71 +77,83 @@ const Form = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values]);
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col w-full justify-center items-center gap-5 px-6 text-lg font-medium text-stone-700">
-      <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.num ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2 rounded-md border-2`}>
-        <label htmlFor="num">123</label>
-        <input type="checkbox" name="num" onChange={handleChange} value={values.num} checked={values.num} className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2" />
-      </div>
-      <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.alpha ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2  rounded-md border-2`}>
-        <label htmlFor="alpha">abc</label>
-        <input type="checkbox" name="alpha" onChange={handleChange} value={values.alpha} checked={values.alpha} className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2 " />
-      </div>
-      <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.cap ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2 rounded-md border-2`}>
-        <label htmlFor="cap">ABC</label>
-        <input type="checkbox" name="cap" onChange={handleChange} value={values.cap} checked={values.cap} className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2" />
-      </div>
-      <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.special ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2 rounded-md border-2`}>
-        <label htmlFor="special">$@&!</label>
-        <input
-          type="checkbox"
-          name="special"
-          onChange={handleChange}
-          value={values.special}
-          checked={values.special}
-          className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2"
-        />
-      </div>
-      <div
-        className={`flex flex-row justify-between items-center w-full border border-dashed ${values.quotes ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2 pl-20 rounded-md border-2`}
-      >
-        <label htmlFor="quotes">Sin comillas</label>
-        <input
-          type="checkbox"
-          name="quotes"
-          onChange={handleChange}
-          value={values.quotes}
-          disabled={!values.special}
-          checked={values.quotes}
-          className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2"
-        />
-      </div>
-      <div className="flex flex-col justify-center items-center gap-4">
-        <label htmlFor="long" className="text-xl font-semibold">
-          {values.long}
-        </label>
-        <input type="range" min={1} max={30} name="long" onChange={handleChange} value={values.long} className="accent-green-600 outline-none border-none h-5" />
-      </div>
-      <div className="flex flex-row justify-center items-center w-full">
-        <p className=" text-md font-semibold text-stone-600 w-full px-3 py-3 border border-stone-300 border-r-0 rounded-l-md text-center"> {password}</p>
+    <form
+      onSubmit={handleSubmit}
+      className="px-8 lg:px-28 flex flex-col w-full justify-center items-center gap-5 text-lg font-medium text-stone-700 lg:flex-row lg:justify-start lg:py-11 lg:items-start"
+    >
+      <div className="flex flex-col w-full justify-center items-center gap-5 lg:w-[100%] lg:border lg:border-gray-200  lg:rounded-md lg:px-4 lg:py-4">
+        <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.num ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2 rounded-md border-2`}>
+          <label htmlFor="num">123</label>
+          <input type="checkbox" name="num" onChange={handleChange} value={values.num} checked={values.num} className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2" />
+        </div>
+        <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.alpha ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2  rounded-md border-2`}>
+          <label htmlFor="alpha">abc</label>
+          <input type="checkbox" name="alpha" onChange={handleChange} value={values.alpha} checked={values.alpha} className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2 " />
+        </div>
+        <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.cap ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2 rounded-md border-2`}>
+          <label htmlFor="cap">ABC</label>
+          <input type="checkbox" name="cap" onChange={handleChange} value={values.cap} checked={values.cap} className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2" />
+        </div>
+        <div className={`flex flex-row justify-between items-center w-full border border-dashed ${values.special ? "border-green-700 bg-green-50" : "border-gray-400"}  px-4 py-2 rounded-md border-2`}>
+          <label htmlFor="special">$@&!</label>
+          <input
+            type="checkbox"
+            name="special"
+            onChange={handleChange}
+            value={values.special}
+            checked={values.special}
+            className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2"
+          />
+        </div>
         <div
-          className={` text-md flex flex-row justify-center items-center px-3 py-3 gap-2 border border-stone-300 rounded-r-md cursor-pointer font-semibold text-green-700 bg-green-100 transition-all duration-1000 ${
-            copied ? "bg-green-700 text-white" : "bg-green-100 text-green-700"
-          }`}
-          onClick={() => {
-            navigator.clipboard.writeText(password);
-            setCopied(true);
-            setTimeout(() => {
-              setCopied(false);
-            }, 2000);
-          }}
+          className={`flex flex-row justify-between items-center w-full border border-dashed ${
+            values.quotes ? "border-green-700 bg-green-50" : "border-gray-400"
+          }  px-4 py-2 pl-20 rounded-md border-2`}
         >
-          {copied ? <FaCheck className="text-3xl" /> : <span>Copiar</span>}
-          <FaCopy className="hidden" />
+          <label htmlFor="quotes">Sin comillas</label>
+          <input
+            type="checkbox"
+            name="quotes"
+            onChange={handleChange}
+            value={values.quotes}
+            disabled={!values.special}
+            checked={values.quotes}
+            className=" checked:accent-green-700 border-gray-500 h-4 w-4 rounded-sm border-2"
+          />
+        </div>
+        <div className="flex flex-col justify-center items-center gap-4">
+          <label htmlFor="long" className="text-xl font-semibold">
+            {values.long}
+          </label>
+          <input type="range" min={1} max={30} name="long" onChange={handleChange} value={values.long} className="accent-green-600 outline-none border-none h-5" />
         </div>
       </div>
-      <button type="submit" className="mt-6 w-full py-2 text-center font-bold text-xl tracking-wider bg-gradient-to-br from-stone-800 to-green-700 opacity-85 text-white rounded-md hover:opacity-100">
-        Generar
-      </button>
+      <div className="lg:w-[100%] lg:self-center flex flex-col justify-center items-center">
+        <div className="flex flex-row justify-center items-center w-full">
+          <p className=" text-md font-semibold text-stone-600 w-full px-3 py-3 border border-stone-300 border-r-0 rounded-l-md text-center"> {password}</p>
+          <div
+            className={` text-md flex flex-row justify-center items-center px-3 py-3 gap-2 border border-stone-300 rounded-r-md cursor-pointer font-semibold text-green-700 bg-green-100 transition-all duration-1000 ${
+              copied ? "bg-green-700 text-white" : "bg-green-100 text-green-700"
+            }`}
+            onClick={() => {
+              navigator.clipboard.writeText(password);
+              setCopied(true);
+              setTimeout(() => {
+                setCopied(false);
+              }, 2000);
+            }}
+          >
+            {copied ? <FaCheck className="text-3xl" /> : <span>Copiar</span>}
+            <FaCopy className="hidden" />
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="mt-6 w-full py-2 text-center font-bold text-xl tracking-wider bg-gradient-to-br from-stone-800 to-green-700 opacity-85 text-white rounded-md hover:opacity-100"
+        >
+          Generar
+        </button>
+      </div>
     </form>
   );
 };
